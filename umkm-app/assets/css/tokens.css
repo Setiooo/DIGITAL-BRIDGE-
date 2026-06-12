@@ -1,0 +1,44 @@
+:root{
+  /* ===== Brand palette (mobile super app) ===== */
+  --primary:#0B1F4D;        /* deep navy */
+  --primary-700:#0d2a63;
+  --primary-600:#143a86;
+  --primary-300:#5b7bc4;
+  --primary-50:#eef2fb;
+  --secondary:#D4A017;      /* gold */
+  --secondary-600:#b8860b;
+  --secondary-50:#fdf6e3;
+  --bg:#F8FAFC;             /* app background */
+  --surface:#ffffff;
+  --surface-2:#f1f5f9;
+  --ink:#0f172a;
+  --muted:#64748b;
+  --muted-2:#94a3b8;
+  --border:#e6eaf0;
+  --success:#16a34a;--success-bg:#dcfce7;
+  --warn:#d97706;--warn-bg:#fef3c7;
+  --danger:#dc2626;--danger-bg:#fee2e2;
+  --info:#2563eb;--info-bg:#dbeafe;
+  --wa:#25d366;
+
+  /* gradients */
+  --grad-primary:linear-gradient(135deg,#0B1F4D,#143a86);
+  --grad-gold:linear-gradient(135deg,#D4A017,#f1c34a);
+  --grad-navy-gold:linear-gradient(135deg,#0B1F4D 0%,#16306f 60%,#b8860b 160%);
+
+  /* radii */
+  --r-sm:10px;--r:14px;--r-lg:20px;--r-xl:26px;--r-pill:999px;
+
+  /* shadow */
+  --sh-sm:0 1px 3px rgba(11,31,77,.08);
+  --sh:0 6px 20px rgba(11,31,77,.10);
+  --sh-lg:0 14px 40px rgba(11,31,77,.16);
+  --sh-gold:0 8px 24px rgba(212,160,23,.35);
+
+  /* layout */
+  --app-max:480px;
+  --header-h:58px;
+  --nav-h:64px;
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --font:'Plus Jakarta Sans','DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}

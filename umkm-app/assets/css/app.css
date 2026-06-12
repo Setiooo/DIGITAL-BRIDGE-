@@ -1,0 +1,83 @@
+/* app.css — frame shell, splash, chat (AI/WhatsApp), login, list group, misc */
+
+/* ===== Phone frame ===== */
+.app-frame{max-width:var(--app-max);margin:0 auto;min-height:100vh;background:var(--bg);
+  position:relative;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 0 60px rgba(0,0,0,.35)}
+@media(min-width:520px){
+  body{padding:18px 0}
+  .app-frame{min-height:calc(100vh - 36px);height:calc(100vh - 36px);border-radius:34px;border:1px solid #1c2c54}
+  .app-frame::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:140px;height:24px;background:#0a1430;border-radius:0 0 16px 16px;z-index:60}
+}
+.app-inner{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+
+/* nav hidden on full-screen flows */
+.app-frame.no-nav .bottom-nav{display:none}
+.app-frame.no-nav .app-view{padding-bottom:0}
+.app-frame.no-nav .fab{bottom:calc(var(--safe-bottom) + 16px)}
+
+/* ===== Splash ===== */
+.splash{position:absolute;inset:0;z-index:200;background:var(--grad-navy-gold);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .4s}
+.splash-logo{width:84px;height:84px;border-radius:26px;background:rgba(255,255,255,.16);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;font-size:2.6rem;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.splash-title{font-size:1.5rem;font-weight:800;margin-top:16px;letter-spacing:-.02em}
+.splash-sub{font-size:.82rem;opacity:.8;margin-top:4px}
+
+/* ===== Generic spinner ===== */
+.spin{width:22px;height:22px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;
+  border-radius:50%;animation:spin .7s linear infinite}
+
+/* ===== List group (profile) ===== */
+.li-group{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh-sm);background:var(--surface)}
+.li-group .li-item:last-child{border-bottom:none}
+.li-item{transition:background .15s}
+.li-item:active{background:var(--surface-2)}
+
+/* ===== Quick chips (AI / WA templates) ===== */
+.ai-quick{display:flex;gap:8px;overflow-x:auto;padding:8px 14px}
+.qchip{flex:0 0 auto;padding:.5rem .85rem;border-radius:var(--r-pill);background:var(--primary-50);
+  color:var(--primary-600);font-size:.75rem;font-weight:600;border:1px solid #dde6f6;white-space:nowrap}
+.qchip:active{background:#dde6f6}
+
+/* ===== AI Advisor (ChatGPT mobile) ===== */
+.ai-topbar{position:sticky;top:0;z-index:20;background:var(--bg);padding:10px 14px;border-bottom:1px solid var(--border)}
+.ai-select{flex:1;min-width:0;border:1px solid var(--border);border-radius:var(--r-pill);background:var(--surface);
+  padding:.45rem .8rem;font-size:.8rem;font-weight:700;color:var(--ink);appearance:none}
+.ai-msgs{display:flex;flex-direction:column;gap:10px;padding:14px;min-height:calc(100vh - 290px)}
+.ai-inputbar{position:sticky;bottom:calc(var(--nav-h) + var(--safe-bottom));z-index:20;display:flex;align-items:center;gap:8px;
+  padding:10px 12px;background:var(--surface);border-top:1px solid var(--border)}
+.ai-inputbar input{flex:1;border:1px solid var(--border);border-radius:var(--r-pill);padding:.72rem 1rem;font-size:.86rem;outline:none}
+.ai-inputbar input:focus{border-color:var(--primary-300)}
+.ai-send{width:44px;height:44px;border-radius:50%;background:var(--grad-primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.ai-send.wa{background:var(--wa)}
+.bubble.typing{display:inline-flex;gap:4px;align-items:center;width:auto;max-width:64px}
+.bubble.typing span{width:7px;height:7px;border-radius:50%;background:var(--muted-2);animation:td 1s infinite}
+.bubble.typing span:nth-child(2){animation-delay:.15s}
+.bubble.typing span:nth-child(3){animation-delay:.3s}
+@keyframes td{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+
+/* ===== Komunikasi (WhatsApp Business) ===== */
+.wa-search{padding:10px 14px;background:var(--bg)}
+.wa-item{display:flex;align-items:center;gap:12px;padding:12px 14px;width:100%;background:var(--surface);border-bottom:1px solid var(--border)}
+.wa-item:active{background:var(--surface-2)}
+.wa-ava{width:48px;height:48px;border-radius:50%;background:var(--primary-50);display:flex;align-items:center;
+  justify-content:center;font-size:1.4rem;flex-shrink:0}
+.wa-ava.sm{width:38px;height:38px;font-size:1.15rem}
+.wa-unread{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--wa);color:#fff;
+  font-size:.66rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.wa-thread-head{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:8px 12px;
+  background:var(--grad-primary);color:#fff}
+.wa-thread-head .ah-back,.wa-thread-head .ah-btn{color:#fff}
+.wa-thread-head .t-xs{opacity:.85}
+.wa-msgs{display:flex;flex-direction:column;gap:8px;padding:14px;min-height:calc(100vh - 300px);
+  background:#eef2f7 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='3' cy='3' r='1' fill='%23dde5ee'/%3E%3C/svg%3E")}
+.wa-msgs .bubble.me{background:#d9fdd3;color:#0b2e13}
+.ai-inputbar.wa{background:var(--surface)}
+
+/* ===== Login role cards ===== */
+.role-card{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:var(--r-lg);
+  background:var(--surface);border:1.5px solid var(--border);transition:all .15s}
+.role-card.on{border-color:var(--primary);background:var(--primary-50);box-shadow:var(--sh-sm)}
+.role-card.on b{color:var(--primary)}
