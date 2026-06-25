@@ -1,7 +1,7 @@
 {
-  "name": "UMKM Jatim Super App",
-  "short_name": "UMKM Jatim",
-  "description": "Super App untuk memajukan UMKM Jawa Timur",
+  "name": "Kent's Store 24 Hours",
+  "short_name": "Kent's Store",
+  "description": "Super App UMKM Jatim - Kent's Store 24 Hours",
   "start_url": "/DIGITAL-BRIDGE-/umkm-app/",
   "display": "standalone",
   "background_color": "#0B1F4D",
@@ -10,13 +10,13 @@
   "scope": "/DIGITAL-BRIDGE-/umkm-app/",
   "icons": [
     {
-      "src": "assets/icons/icon-192x192.png",
+      "src": "/DIGITAL-BRIDGE-/umkm-app/assets/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "assets/icons/icon-512x512.png",
+      "src": "/DIGITAL-BRIDGE-/umkm-app/assets/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
