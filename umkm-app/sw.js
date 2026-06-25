@@ -1,5 +1,4 @@
-const CACHE_NAME = 'umkm-jatim-v4';
-
+const CACHE_NAME = 'kents-store-v2';
 const BASE_PATH = '/DIGITAL-BRIDGE-/umkm-app/';
 
 const urlsToCache = [
@@ -11,7 +10,7 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
-  console.log('🚀 Installing UMKM Jatim PWA...');
+  console.log('🚀 Installing Kents Store PWA...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
@@ -27,11 +26,10 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        if (response) return response;
-        return fetch(event.request);
+        return response || fetch(event.request);
       })
       .catch(() => {
-        // Fallback ke index.html kalau offline
+        // Offline fallback
         if (event.request.destination === 'document') {
           return caches.match(BASE_PATH + 'index.html');
         }
