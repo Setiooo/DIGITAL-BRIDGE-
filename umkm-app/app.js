@@ -28,8 +28,8 @@ window.App = window.App || {};
     },
     about(){
       App.sheet.open({title:'ℹ️ Tentang Aplikasi',body:`
-        <p style="font-size:.86rem;color:var(--muted);line-height:1.7"><b style="color:var(--ink)">UMKM Jatim Super App</b> adalah platform terpadu untuk memajukan UMKM Jawa Timur — menghubungkan pelaku usaha, pemerintah, dan investor dalam satu pengalaman aplikasi mobile modern.</p>
-        <div class="card card-pad" style="margin-top:12px"><div class="xrow"><span>Versi</span><span>2.0 (Super App)</span></div><div class="xrow"><span>Modul</span><span>10 fitur</span></div><div class="xrow"><span>Arsitektur</span><span>Modular SPA</span></div></div>`});
+        <p style="font-size:.86rem;color:var(--muted);line-height:1.7"><b style="color:var(--ink)">Kent's Store 24 Hours</b> adalah Super App UMKM Jatim — menghubungkan pelaku usaha, pemerintah, dan investor.</p>
+        <div class="card card-pad" style="margin-top:12px"><div class="xrow"><span>Versi</span><span>2.0 (PWA)</span></div><div class="xrow"><span>Modul</span><span>10 fitur</span></div></div>`});
     },
   };
 
@@ -37,22 +37,29 @@ window.App = window.App || {};
     App.auth.restore();
     App.AppShell.mount();
     App.go('home');
-    // splash fade
-    const sp=App.$('#splash'); if(sp){ setTimeout(()=>{ sp.style.opacity='0'; setTimeout(()=>sp.remove(),400); }, 600); }
+    
+    // === FIX SPLASH SCREEN (Penting untuk PWA) ===
+    const sp = App.$('#splash');
+    if (sp) {
+      setTimeout(() => {
+        sp.style.transition = 'opacity 0.6s ease-out';
+        sp.style.opacity = '0';
+        setTimeout(() => {
+          if (sp && sp.parentNode) sp.parentNode.removeChild(sp);
+        }, 800);
+      }, 1200);
+    }
   }
 
-  if(document.readyState!=='loading') boot(); else document.addEventListener('DOMContentLoaded',boot);
+  if(document.readyState!=='loading') boot(); 
+  else document.addEventListener('DOMContentLoaded',boot);
 
-  // === PWA SERVICE WORKER REGISTRATION ===
+  // === PWA SERVICE WORKER ===
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/DIGITAL-BRIDGE-/umkm-app/sw.js')
-        .then(reg => {
-          console.log('✅ Service Worker Registered!', reg);
-        })
-        .catch(err => {
-          console.log('❌ Service Worker Registration Failed:', err);
-        });
+        .then(reg => console.log('✅ SW Registered'))
+        .catch(err => console.log('❌ SW Failed', err));
     });
   }
 
