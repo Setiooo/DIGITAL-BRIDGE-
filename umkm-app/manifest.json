@@ -1,0 +1,25 @@
+{
+  "name": "UMKM Jatim Super App",
+  "short_name": "UMKM Jatim",
+  "description": "Super App untuk memajukan UMKM Jawa Timur - Belanja, Investasi, Pelatihan & Koneksi",
+  "start_url": "/DIGITAL-BRIDGE-/umkm-app/",
+  "display": "standalone",
+  "background_color": "#0B1F4D",
+  "theme_color": "#0B1F4D",
+  "orientation": "portrait-primary",
+  "scope": "/DIGITAL-BRIDGE-/umkm-app/",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
