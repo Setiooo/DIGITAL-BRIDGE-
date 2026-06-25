@@ -1,7 +1,7 @@
 {
   "name": "UMKM Jatim Super App",
   "short_name": "UMKM Jatim",
-  "description": "Super App untuk memajukan UMKM Jawa Timur - Belanja, Investasi, Pelatihan & Koneksi",
+  "description": "Super App untuk memajukan UMKM Jawa Timur",
   "start_url": "/DIGITAL-BRIDGE-/umkm-app/",
   "display": "standalone",
   "background_color": "#0B1F4D",
