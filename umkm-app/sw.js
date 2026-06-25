@@ -1,15 +1,17 @@
-const CACHE_NAME = 'umkm-jatim-v2';
+const CACHE_NAME = 'umkm-jatim-v4';
 
-// Daftar file yang harus selalu di-cache
+const BASE_PATH = '/DIGITAL-BRIDGE-/umkm-app/';
+
 const urlsToCache = [
-  '/DIGITAL-BRIDGE-/umkm-app/',
-  '/DIGITAL-BRIDGE-/umkm-app/index.html',
-  '/DIGITAL-BRIDGE-/umkm-app/manifest.json',
-  '/DIGITAL-BRIDGE-/umkm-app/sw.js',
-  '/DIGITAL-BRIDGE-/umkm-app/app.js'
+  BASE_PATH,
+  BASE_PATH + 'index.html',
+  BASE_PATH + 'manifest.json',
+  BASE_PATH + 'sw.js',
+  BASE_PATH + 'app.js'
 ];
 
 self.addEventListener('install', event => {
+  console.log('🚀 Installing UMKM Jatim PWA...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
@@ -25,13 +27,13 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Kembalikan dari cache kalau ada, kalau tidak fetch dari network
-        return response || fetch(event.request);
+        if (response) return response;
+        return fetch(event.request);
       })
       .catch(() => {
-        // Offline fallback (opsional)
+        // Fallback ke index.html kalau offline
         if (event.request.destination === 'document') {
-          return caches.match('/DIGITAL-BRIDGE-/umkm-app/index.html');
+          return caches.match(BASE_PATH + 'index.html');
         }
       })
   );
